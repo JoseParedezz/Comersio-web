@@ -1,1 +1,9 @@
-hola
+Create database BDcomercioWeb 
+go
+use BDcomercioWeb 
+go
+create table Categoria(
+	Id_categoria int primary key not null identity(1,1),
+	Nombre_categoria varchar(40)  not null
+)
+
