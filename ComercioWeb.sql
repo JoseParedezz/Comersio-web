@@ -57,3 +57,20 @@ create table Venta (
 
     foreign key (DNI_usuario) references Usuario(DNI_usuario)
 );
+
+go
+create table Detalles(
+	id_venta int,
+	id_producto int,
+	cantidad int not null default 1,
+	primary key (id_venta, id_producto),
+	foreign key(id_venta) references Venta(id_venta),
+	foreign key(id_producto) references Producto(id_Producto)
+)
+go
+create table Registros(
+	fecha date primary key not null,
+	cantidad_compras int, 
+	total_importe_mes float
+
+)
