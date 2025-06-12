@@ -1,3 +1,6 @@
+USE BDcomercioWeb;
+GO
+
 create trigger ActualizarRegistro
 on Venta
 after insert
@@ -15,7 +18,7 @@ BEGIN
     select
         @importe_total = sum(v.importe_total),
         @stock_total = sum(d.cantidad)
-    from Venta v
+    from Venta as v
     JOIN insterted i on v.id_venta = i.id_venta
     JOIN Detalles d on d.id_venta = v.id_venta;
     -- Usamos los joins para unir las tablas
@@ -25,7 +28,7 @@ BEGIN
             UPDATE Registros
             SET
                 Cantidad_compras = cantidad_compras + @stock_total,
-                total_mes = total mes + @importe_total
+                total_importe_mes = total_importe_mes + @importe_total
             WHERE fecha = @mes;
     END
     ELSE
@@ -33,7 +36,15 @@ BEGIN
             insert into Registros (fecha, cantidad_compras, total_importe_mes)
             values (@mes, @importe_total, @stock_total);
         END
+    
+    -- Chequeamos si ya hay un registro para el mes, si existe acumulamos el stock y el importe
+    -- Si no lo crea
 end;
 go
+
+SELECT name
+FROM sys.triggers;
+
+
 
         
