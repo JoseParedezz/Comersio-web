@@ -1,7 +1,7 @@
 USE BDcomercioWeb;
 GO
 
-create trigger ActualizarRegistro
+create trigger tr_actualizar_registro
 on Venta
 after insert
 as
@@ -21,7 +21,6 @@ BEGIN
     from Venta as v
     JOIN insterted i on v.id_venta = i.id_venta
     JOIN Detalles d on d.id_venta = v.id_venta;
-    -- Usamos los joins para unir las tablas
 
     if EXISTS (select 1 from Registros where fehca = @mes)
         BEGIN
@@ -36,15 +35,8 @@ BEGIN
             insert into Registros (fecha, cantidad_compras, total_importe_mes)
             values (@mes, @importe_total, @stock_total);
         END
-    
-    -- Chequeamos si ya hay un registro para el mes, si existe acumulamos el stock y el importe
-    -- Si no lo crea
 end;
 go
 
 SELECT name
 FROM sys.triggers;
-
-
-
-        

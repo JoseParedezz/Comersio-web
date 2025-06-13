@@ -2,7 +2,7 @@ use BDcomercioWeb
 
 go
 
-create trigger TR_email_duplicado on Usuario 
+create trigger tr_email_duplicado on Usuario 
 instead of insert
 as
 begin 

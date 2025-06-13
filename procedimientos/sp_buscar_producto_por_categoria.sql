@@ -1,4 +1,4 @@
-create procedure BuscarProductoPorCategoria
+create procedure sp_buscar_producto_por_categoria
     @id_categoria INT
 as
 begin

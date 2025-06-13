@@ -1,4 +1,4 @@
-create procedure RegistrarDetalleVenta
+create procedure sp_registrar_detelle_venta
     @id_venta INT,
     @id_producto INT,
     @cantidad INT

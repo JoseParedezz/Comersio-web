@@ -1,4 +1,4 @@
-create procedure SP_agregarVenta(
+create procedure sp_agregar_venta(
     @DNI_usuario int,
     @fecha_hora datetime,
     @importe_total float,

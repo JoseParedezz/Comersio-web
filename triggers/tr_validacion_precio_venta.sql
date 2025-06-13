@@ -1,4 +1,4 @@
-create trigger ValidarPrecioVenta
+create trigger tr_validar_precio_venta
 on Producto
 after update
 as

@@ -1,4 +1,4 @@
-create procedure SP_listarVentaPorUsuario(
+create procedure sp_listar_venta_por_usuario(
 	@DNI_usuario int
 )
 as

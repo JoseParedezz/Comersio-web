@@ -1,4 +1,4 @@
-create trigger ActualizarStockPorVenta
+create trigger tr_actualizar_stock_por_venta
 on Detalles
 after insert
 as

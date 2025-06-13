@@ -1,4 +1,4 @@
-create procedure RegistrarUsuario
+create procedure sp_registrar_usuario
     @DNI_usuario INT,
     @nombre_usuario VARCHAR(100),
     @apellido_usuario VARCHAR(100),
