@@ -22,7 +22,7 @@ BEGIN
     JOIN insterted i on v.id_venta = i.id_venta
     JOIN Detalles d on d.id_venta = v.id_venta;
 
-    if EXISTS (select 1 from Registros where fehca = @mes)
+    if EXISTS (select 1 from Registros where fecha = @mes)
         BEGIN
             UPDATE Registros
             SET
