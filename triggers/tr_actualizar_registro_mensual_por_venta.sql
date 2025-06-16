@@ -38,7 +38,7 @@ BEGIN
 end;
 go
 
+
 --SELECT name
 --FROM sys.triggers;
-
 
