@@ -19,10 +19,10 @@ BEGIN
         @importe_total = sum(v.importe_total),
         @stock_total = sum(d.cantidad)
     from Venta as v
-    JOIN insterted i on v.id_venta = i.id_venta
+    JOIN inserted i on v.id_venta = i.id_venta
     JOIN Detalles d on d.id_venta = v.id_venta;
 
-    if EXISTS (select 1 from Registros where fehca = @mes)
+    if EXISTS (select 1 from Registros where fecha = @mes)
         BEGIN
             UPDATE Registros
             SET
@@ -38,5 +38,7 @@ BEGIN
 end;
 go
 
-SELECT name
-FROM sys.triggers;
+--SELECT name
+--FROM sys.triggers;
+
+

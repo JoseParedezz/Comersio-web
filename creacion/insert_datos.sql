@@ -1,3 +1,5 @@
+USE BDcomercioWeb
+GO
 INSERT INTO Roles (nombre_rol) VALUES
 	(N'Administrador'),
 	(N'Vendedor');

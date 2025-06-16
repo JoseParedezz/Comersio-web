@@ -11,7 +11,7 @@ BEGIN
     if EXISTS (
         SELECT 1 
         FROM inserted i 
-        JOIN Producto p on i.id_prodcuto = p.Producto
+        JOIN Producto p on i.id_prodcuto = p.id_producto
         WHERE i.cantidad >= p.stock
     )
     BEGIN
