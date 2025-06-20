@@ -63,6 +63,7 @@ create table Detalles(
 	id_venta int,
 	id_producto int,
 	cantidad int not null default 1,
+	precio_venta float not null, 
 	primary key (id_venta, id_producto),
 	foreign key(id_venta) references Venta(id_venta),
 	foreign key(id_producto) references Producto(id_Producto)
