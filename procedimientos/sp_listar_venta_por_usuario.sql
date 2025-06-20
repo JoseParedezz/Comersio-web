@@ -11,6 +11,6 @@ begin
 		order by v.fecha_hora desc
 	end try
 	begin catch
-		
+		print error_message()
 	end catch
 end
