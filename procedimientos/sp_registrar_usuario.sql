@@ -1,20 +1,23 @@
 create procedure sp_registrar_usuario
-    @DNI_usuario INT,
-    @nombre_usuario VARCHAR(100),
-    @apellido_usuario VARCHAR(100),
-    @email VARCHAR(100),
-    @telefono INT,
-    @id_rol INT
+    @DNI_usuario int,
+    @nombre_usuario varchar(100),
+    @apellido_usuario varchar(100),
+    @email varchar(100),
+    @telefono int,
+    @id_rol int
 as
 begin
-    set nocount on;
-
-    insert int Usuario (DNI_usuario, nombre_usuario, apellido_usuario, email, telefono, id_rol)
-    values (@DNI_usuario, @nombre_usuario, @apellido_usuario, @email, @telefono, @id_rol);
+    begin try
+        insert into Usuario (DNI_usuario, nombre_usuario, apellido_usuario, email, telefono, id_rol)
+        values (@DNI_usuario, @nombre_usuario, @apellido_usuario, @email, @telefono, @id_rol);
+    end try
+    begin catch
+        declare @msg nvarchar(4000) = error_message();
+        raiserror('Error capturado: %s', 16, 1, @msg);
+    end catch
 end;
-go
 
--- exec RegistrarUsuario
+-- exec sp_registrar_usuario
 --     @DNI_usuario = x,
 --     @nombre_usuario = '',
 --     @apellido_usuario = '',

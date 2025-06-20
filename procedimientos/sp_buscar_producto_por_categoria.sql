@@ -1,22 +1,25 @@
 create procedure sp_buscar_producto_por_categoria
-    @id_categoria INT
+    @id_categoria int
 as
 begin
-    set nocount on;
+    begin try
+        select 
+            id_producto,
+            nombre_producto,
+            descripcion,
+            precio_compra,
+            precio_venta,
+            stock,
+            fecha_vencimiento,
+            id_categoria,
+            id_proveedor
+        from producto
+        where id_categoria = @id_categoria;
+    end try
+    begin catch
+        declare @msg nvarchar(4000) = error_message();
+        raiserror('Error: %s', 16, 1, @msg);
+    end catch
+end;
 
-    select 
-        id_Producto,
-        nombre_producto,
-        descripcion,
-        precio_compra,
-        precio_venta,
-        stock,
-        fecha_vencimiento,
-        id_categoria,
-        id_proveedor
-    from Producto
-    where id_categoria = @id_categoria;
-END;
-GO
-
--- exec BuscarProductoPorCategoria @id_categoria = 1;
+--exec sp_buscar_producto_por_categoria @id_categoria = 1;

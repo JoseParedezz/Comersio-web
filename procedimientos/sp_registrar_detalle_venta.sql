@@ -1,22 +1,38 @@
-create procedure sp_registrar_detelle_venta
-    @id_venta INT,
-    @id_producto INT,
-    @cantidad INT
+create procedure sp_registrar_detalle_venta
+    @id_venta int,
+    @id_producto int,
+    @cantidad int
 as
 begin
-    set nocount on;
+    begin try
+        if exists (
+            select 1
+            from detalles
+            where id_venta = @id_venta and id_producto = @id_producto
+        )
+        begin
+            update detalles
+            set cantidad = cantidad + @cantidad
+            where id_venta = @id_venta and id_producto = @id_producto;
+        end
+        else
+        begin
+            insert into detalles (id_venta, id_producto, cantidad)
+            values (@id_venta, @id_producto, @cantidad);
+        end
 
-    insert into Detalles (id_venta, id_producto, cantidad)
-    values (@id_venta, @id_producto, @cantidad);
-
-    update Producto
-    set stock = stock - @cantidad
-    where id_Producto = @id_producto;
+        update producto
+        set stock = stock - @cantidad
+        where id_producto = @id_producto;
+    end try
+    begin catch
+        declare @msg nvarchar(4000) = error_message();
+        raiserror('Error: %s', 16, 1, @msg);
+    end catch
 end;
-go
 
 
--- exec RegistrarDetalleVenta
+-- exec sp_registrar_detalle_venta
 --     @id_venta = x,
 --     @id_producto = x, 
 --     @cantidad = x;
