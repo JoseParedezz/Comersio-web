@@ -7,7 +7,6 @@ as
 begin 
 	begin try
 		begin transaction
-		
 		if exists (
 			select 1
 			from inserted as i
@@ -20,7 +19,6 @@ begin
 			rollback transaction
 			return
 		end
-
 		insert into Usuario (DNI_usuario, nombre_usuario, apellido_usuario, email, telefono, id_rol)
 		SELECT DNI_usuario, nombre_usuario, apellido_usuario, email, telefono, id_rol
 		from inserted
