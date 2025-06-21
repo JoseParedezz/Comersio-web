@@ -14,5 +14,5 @@ INNER JOIN Categoria c ON p.id_categoria = c.ID_categoria
 --Buscamos las coincidencias entre la tabla producto y categoria con el id_categoria
 LEFT JOIN Proveedor pr ON p.id_proveedor = pr.id_proveedor;
 -- Devuelve los proveedores
-
+go
 SELECT * FROM vw_producto_categoria_proveedor;
