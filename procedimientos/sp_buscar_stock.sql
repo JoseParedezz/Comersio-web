@@ -3,9 +3,8 @@ GO
 CREATE PROCEDURE sp_buscar_stock_productos(
     @stock INT
 )
-AS 
-BEGIN
-   
+as 
+begin   
     begin try
         select
             id_Producto,
