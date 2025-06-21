@@ -1,5 +1,5 @@
 create procedure sp_agregar_producto(   
-	@nombre_producto varchar(100),
+    @nombre_producto varchar(100),
     @descripcion varchar(255),
     @precio_compra float,
     @precio_venta float,
