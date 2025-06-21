@@ -6,16 +6,22 @@ CREATE PROCEDURE sp_buscar_stock_productos(
 -- Inicio del procedimiento:
 AS 
 BEGIN
-    --Traemos los productos
-    SELECT
-        id_Producto,
-        nombre_producto,
-        precio_venta,
-        stock,
-        id_categoria,
-        id_proveedor
-    FROM Producto
-    WHERE stock < @stock;
+   
+    begin try
+     --Traemos los productos
+        SELECT
+            id_Producto,
+            nombre_producto,
+            precio_venta,
+            stock,
+            id_categoria,
+            id_proveedor
+        FROM Producto
+        WHERE stock < @stock;
+    END try
+    begin catch
+        
+    end catch
 END;
 
 --Probamos
