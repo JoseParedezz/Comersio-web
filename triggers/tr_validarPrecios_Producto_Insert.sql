@@ -1,4 +1,4 @@
-create trigger TR_ValidarPrecios_Producto_Insert on producto
+create trigger tr_ValidarPrecios_Producto_Insert on producto
 instead of insert
 as
 begin 
