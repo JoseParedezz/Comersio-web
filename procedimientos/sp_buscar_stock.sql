@@ -20,7 +20,7 @@ BEGIN
         WHERE stock < @stock;
     END try
     begin catch
-        
+        print error_message()
     end catch
 END;
 
