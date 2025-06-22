@@ -18,25 +18,25 @@ go
 
 INSERT INTO Producto (nombre_producto, descripcion, precio_compra, precio_venta, stock, fecha_vencimiento, id_categoria, id_proveedor) VALUES
 	(N'Producto 1', N'Descripción producto 1', 1.0, 2.0, 100, '2025-12-01', 1, 1),
-	(N'Producto 2', N'Descripción producto 2', 1.1, 2.2, 90, '2025-12-02', 1, 1),
-	(N'Producto 3', N'Descripción producto 3', 1.2, 2.4, 80, '2025-12-03', 1, 1),
-	(N'Producto 4', N'Descripción producto 4', 1.3, 2.6, 70, '2025-12-04', 1, 1),
-	(N'Producto 5', N'Descripción producto 5', 1.4, 2.8, 60, '2025-12-05', 1, 1),
-	(N'Producto 6', N'Descripción producto 6', 1.5, 3.0, 50, '2025-12-06', 1, 1),
+	(N'Producto 2', N'Descripción producto 2', 1.1, 2.2, 90, '2025-12-02', 2, 2),
+	(N'Producto 3', N'Descripción producto 3', 1.2, 2.4, 80, '2025-12-03', 3, 1),
+	(N'Producto 4', N'Descripción producto 4', 1.3, 2.6, 70, '2025-12-04', 1, 2),
+	(N'Producto 5', N'Descripción producto 5', 1.4, 2.8, 60, '2025-12-05', 2, 1),
+	(N'Producto 6', N'Descripción producto 6', 1.5, 3.0, 50, '2025-12-06', 3, 2),
 	(N'Producto 7', N'Descripción producto 7', 1.6, 3.2, 40, '2025-12-07', 1, 1),
-	(N'Producto 8', N'Descripción producto 8', 1.7, 3.4, 30, '2025-12-08', 1, 1),
-	(N'Producto 9', N'Descripción producto 9', 1.8, 3.6, 20, '2025-12-09', 1, 1),
-	(N'Producto 10', N'Descripción producto 10', 1.9, 3.8, 10, '2025-12-10', 1, 1),
-	(N'Producto 11', N'Descripción producto 11', 2.0, 4.0, 15, '2025-12-11', 1, 1),
-	(N'Producto 12', N'Descripción producto 12', 2.1, 4.2, 25, '2025-12-12', 1, 1),
+	(N'Producto 8', N'Descripción producto 8', 1.7, 3.4, 30, '2025-12-08', 2, 2),
+	(N'Producto 9', N'Descripción producto 9', 1.8, 3.6, 20, '2025-12-09', 3, 1),
+	(N'Producto 10', N'Descripción producto 10', 1.9, 3.8, 10, '2025-12-10', 1, 2),
+	(N'Producto 11', N'Descripción producto 11', 2.0, 4.0, 15, '2025-12-11', 2, 1),
+	(N'Producto 12', N'Descripción producto 12', 2.1, 4.2, 25, '2025-12-12', 3, 2),
 	(N'Producto 13', N'Descripción producto 13', 2.2, 4.4, 35, '2025-12-13', 1, 1),
-	(N'Producto 14', N'Descripción producto 14', 2.3, 4.6, 45, '2025-12-14', 1, 1),
-	(N'Producto 15', N'Descripción producto 15', 2.4, 4.8, 55, '2025-12-15', 1, 1),
-	(N'Producto 16', N'Descripción producto 16', 2.5, 5.0, 65, '2025-12-16', 1, 1),
-	(N'Producto 17', N'Descripción producto 17', 2.6, 5.2, 75, '2025-12-17', 1, 1),
-	(N'Producto 18', N'Descripción producto 18', 2.7, 5.4, 85, '2025-12-18', 1, 1),
+	(N'Producto 14', N'Descripción producto 14', 2.3, 4.6, 45, '2025-12-14', 2, 2),
+	(N'Producto 15', N'Descripción producto 15', 2.4, 4.8, 55, '2025-12-15', 3, 1),
+	(N'Producto 16', N'Descripción producto 16', 2.5, 5.0, 65, '2025-12-16', 1, 2),
+	(N'Producto 17', N'Descripción producto 17', 2.6, 5.2, 75, '2025-12-17', 2, 1),
+	(N'Producto 18', N'Descripción producto 18', 2.7, 5.4, 85, '2025-12-18', 3, 2),
 	(N'Producto 19', N'Descripción producto 19', 2.8, 5.6, 95, '2025-12-19', 1, 1),
-	(N'Producto 20', N'Descripción producto 20', 2.9, 5.8, 105, '2025-12-20', 1, 1);
+	(N'Producto 20', N'Descripción producto 20', 2.9, 5.8, 105, '2025-12-20', 2, 2);
 go
 
 INSERT INTO Usuario (DNI_usuario, nombre_usuario, apellido_usuario, email, telefono, id_rol) VALUES
@@ -66,22 +66,22 @@ INSERT INTO Registros (fecha, cantidad_compras, total_importe_mes) VALUES
 	('2025-03-01', 30, 1600.75),
 	('2025-04-01', 22, 1100.9),
 	('2025-05-01', 27, 1400.25),
-	('2025-06-01', 10, 820.3);
+	--('2025-06-01', 10, 820.3);
 go
 
-INSERT INTO Detalles (id_venta, id_producto, cantidad) VALUES
-(1, 1, 2),
-(1, 2, 1),
-(2, 3, 3),
-(2, 4, 1),
-(3, 5, 2),
-(4, 6, 1),
-(4, 7, 2),
-(5, 8, 1),
-(6, 9, 1),
-(6, 10, 2),
-(7, 11, 1),
-(8, 12, 3),
-(9, 13, 2),
-(10, 14, 1),
-(10, 15, 2);
+INSERT INTO Detalles (id_venta, id_producto, cantidad, precio_venta) VALUES
+(1, 1, 2, 2.0),
+(1, 2, 1, 2.2),
+(2, 3, 3, 2.4),
+(2, 4, 1, 2.6),
+(3, 5, 2, 2.8),
+(4, 6, 1, 3.0),
+(4, 7, 2, 3.3),
+(5, 8, 1, 3.4),
+(6, 9, 1, 3.6),
+(6, 10, 2, 3.8),
+(7, 11, 1, 4.0),
+(8, 12, 3, 4.2),
+(9, 13, 2, 4.4),
+(10, 14, 1, 4.6),
+(10, 15, 2, 4.8);
