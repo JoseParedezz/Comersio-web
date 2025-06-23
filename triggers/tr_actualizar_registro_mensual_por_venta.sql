@@ -1,44 +1,40 @@
-USE BDcomercioWeb;
-GO
-
-create trigger tr_actualizar_registro
-on Venta
+use BDcomercioWeb
+go
+create trigger tr_actualizar_registro_en_detalles
+on Detalles
 after insert
 as
-BEGIN
+begin
     set nocount on;
 
-    declare @mes DATE
-    declare @importe_total FLOAT
-    declare @stock_total INT
+    declare @mes date;
 
-    select @mes = DATEFROMPARTS(year(fecha_hora), month(fecha_hora), 1)
-    from inserted;
+    select top 1 @mes = DATEFROMPARTS(YEAR(v.fecha_hora), month(v.fecha_hora), 1)
+    from inserted i
+    join Venta v on i.id_venta = v.id_venta;
 
-    select
-        @importe_total = sum(v.importe_total),
-        @stock_total = sum(d.cantidad)
-    from Venta as v
-    JOIN inserted i on v.id_venta = i.id_venta
-    JOIN Detalles d on d.id_venta = v.id_venta;
+    declare @importe_total float;
+    declare @stock_total int;
 
-    if EXISTS (select 1 from Registros where fecha = @mes)
-        BEGIN
-            UPDATE Registros
-            SET
-                Cantidad_compras = cantidad_compras + @stock_total,
-                total_importe_mes = total_importe_mes + @importe_total
-            WHERE fecha = @mes;
-    END
-    ELSE
-        BEGIN
-            insert into Registros (fecha, cantidad_compras, total_importe_mes)
-            values (@mes, @importe_total, @stock_total);
-        END
+    select 
+        @importe_total = sum(i.precio_venta * i.cantidad),
+        @stock_total = sum(i.cantidad)
+    from inserted i;
+
+
+   if exists (select 1 from Registros where fecha = @mes)
+    begin
+        update Registros
+        set
+            cantidad_compras = cantidad_compras + @stock_total,
+            total_importe_mes = total_importe_mes + @importe_total
+        where fecha = @mes;
+    end
+    else
+    begin
+        insert into Registros (fecha, cantidad_compras, total_importe_mes)
+        values (@mes, @stock_total, @importe_total);
+    end
 end;
-go
 
-
---SELECT name
---FROM sys.triggers;
 
